@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  },
+  "name": "controle-de-estoque",
+  "version": "1.0.0",
+  "description": "Programa semijoias",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+  "start": "nodemon --ext js,html,css index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Renan Coimbra",
+  "license": "ISC"
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="funcoes.js"></script>
+</head>
+
+<body>
+    <div class="form-container">
+        <form action="/cadastro" method="post" class="formcad">
+        <div class="title">
+            <h1>Cadastro De Peças</h1>
+        </div>
+        <label for="nomeprod">Nome Do Produto</label>
+        <input type="text" id="nomeprod" name="nomeprod" required>
+
+        <label for="fornecedor">Fornecedor</label>
+        <select name="categoria" id="fornecedor" required>
+            <!-- Importar os fornecedores -->
+            <option value="" disabled selected>Selecione um fornecedor</option>
+            <option value="fornecedor1">Fornecedor 1</option>
+            <option value="fornecedor2">Fornecedor 2</option>
+        </select>
+
+
+        <label for="preco">Preço Pago</label>
+        <input class="preco" type="number" id="preco1" name="preco1" required>
+
+        <label for="preco">Preço De Venda</label>
+        <input class="preco" type="number" id="preco2" name="preco2" required>
+
+        <label for="quantidade">Quantidade</label>
+        <input class="quant" type="number" id="quant" name="quant" required>
+
+        <div class="button-submit">
+            <button type="submit">Cadastrar</button>
+        </div>
+        </form>
+    </div>
+    <script src="funcoes.js" type="module"></script>
+<script>
+    import { carregarFornecedores } from './funcoes.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        carregarFornecedores();
+    });
+</script>
+<script src="index.js"></script>
+</body>
+</html>

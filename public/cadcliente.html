@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <form action="/cliente.html" method="post" class="formcad">
+        <div class="title">
+            <h1>Cadastro De Clientes</h1>
+        </div>
+        <label for="nomecliente">Nome Completo Do Cliente</label>
+        <input type="text" id="nomecliente" name="cliente" required>
+
+        <label for="endereco">Endereco Completo</label>
+        <input type="text" id="endereco" name="endereco" required>
+
+        <label for="telefone">Numero Do Telefone</label>
+        <input type="number" id="telefone" name="telefone" required>
+
+        <div class="button-submit">
+            <button type="submit">Cadastrar</button>
+            
+        </div>
+        </form>
+    </div>
+
+<script src="index.js"></script>
+</body>
+</html>
