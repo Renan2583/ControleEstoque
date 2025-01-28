@@ -25,17 +25,19 @@ app.get('/vendedor', (req, res) => { //Redireciona para o cadastro de vendedores
     res.redirect('/cadvendedor.html');
 });
 
-let estoque = [];
+let estoque = []; //Vetor para armazenar os produtos
+let clientes = []; //Vetor para armazenar os clientes
+let fornecedores = []; //Vetor para armazenar os fornecedores
+let vendedores = []; //Vetor para armazenar os vendedores
 
 app.post('/cadastro', (req, res) => { 
     const { nomeprod, fornecedor, preco1, preco2 ,quant} = req.body;
-    const produto = { nomeprod,fornecedor,preco1,preco2,quant};
+    const produto = { nomeprod, fornecedor, preco1, preco2, quant };
     estoque.push(produto);
 
     // Exibe uma mensagem de sucesso no próprio formulário de cadastro
     res.redirect('/cadprod.html?sucesso=true');
 });
-
 
 // Rota para exibir os produtos cadastrados
 app.get('/consulta', (req, res) => {
@@ -71,6 +73,58 @@ app.get('/consulta', (req, res) => {
                 <td>${produto.preco1}</td>
                 <td>${produto.preco2}</td>
                 <td>${produto.quant}</td>
+            </tr>`
+        );
+    });
+
+    res.write(
+        `</tbody>
+                </table>
+            </div>
+        </body>
+        </html>`
+    );
+    res.end();
+});
+
+// Cadastro de cliente
+app.post('/cliente', (req, res) => {
+    const { nomecliente, endereco, telefone } = req.body;
+    const cliente = { nomecliente, endereco, telefone };
+    clientes.push(cliente);
+    res.redirect('/cadcliente.html?sucesso=true');
+});
+
+// Rota para exibir os clientes cadastrados
+app.get('/consulta-cliente', (req, res) => {
+    res.write(
+        `<html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Lista de Clientes</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        </head>
+        <body>
+            <h1 class="text-center">Clientes Cadastrados</h1>
+            <div class="container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome Cliente</th>
+                            <th>Endereço</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody>`
+    );
+
+    // Adiciona cada cliente à tabela
+    clientes.forEach(cliente => {
+        res.write(
+            `<tr>
+                <td>${cliente.nomecliente}</td>
+                <td>${cliente.endereco}</td>
+                <td>${cliente.telefone}</td>
             </tr>`
         );
     });

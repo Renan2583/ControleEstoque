@@ -4,6 +4,22 @@
     box-sizing: border-box; /* Garante que padding e margin não afetem o tamanho total do elemento */
 }
 
+html, body {
+    height: 100%;  /* Garante que a altura do corpo e HTML ocupem toda a tela */
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+   background-image:url(teste.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   background-attachment: fixed;
+   font-family: Arial, Helvetica, sans-serif;
+   color: rgb(0, 0, 0);
+}
+
 .formcad {
     display: flex;
     flex-direction: column;
@@ -29,6 +45,7 @@
 .formcad label {
     margin-top: 10px;
     font-weight: bold;
+    margin-left: 10px;
 }
 
 .formcad input,
@@ -36,6 +53,9 @@
     border-radius: 9px;
     border-color: rgb(0, 0, 0);
     height: 30px;
+    margin-bottom: 5px;
+    width: 300px;
+    margin-left: 10px;
 }
 
 
@@ -131,7 +151,6 @@ footer{
     text-align: center;
     padding: 10px ;
     margin-top: auto;
-
 }
 
 
