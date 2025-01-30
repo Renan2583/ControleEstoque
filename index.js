@@ -47,8 +47,9 @@ app.get('/consulta', (req, res) => {
             <meta charset="UTF-8">
             <title>Lista de Produtos</title>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="/style.css">
         </head>
-        <body>
+        <body class="fundo">
             <h1 class="text-center">Produtos Cadastrados</h1>
             <div class="container">
                 <table class="table table-hover">
@@ -125,6 +126,105 @@ app.get('/consulta-cliente', (req, res) => {
                 <td>${cliente.nomecliente}</td>
                 <td>${cliente.endereco}</td>
                 <td>${cliente.telefone}</td>
+            </tr>`
+        );
+    });
+
+    res.write(
+        `</tbody>
+                </table>
+            </div>
+        </body>
+        </html>`
+    );
+    res.end();
+});
+
+app.post('/fornecedor', (req, res) => {
+    const { nomefornecedor, cidade, pedidomin } = req.body;
+    const fornecedor = { nomefornecedor, cidade, pedidomin };
+    fornecedores.push(fornecedor);
+    res.redirect('/cadfornecedor.html?sucesso=true');
+});
+
+app.get('/consulta-fornecedor',(req,res)=>{
+    res.write(
+        `<html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Lista de Fornecedores</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        </head>
+        <body>
+            <h1 class="text-center">Fornecedores Cadastrados</h1>
+            <div class="container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome Fornecedor</th>
+                            <th>Cidade</th>
+                            <th>Pedido Mínimo</th>
+                        </tr>
+                    </thead>
+                    <tbody>`
+    );
+
+    // Adiciona cada fornecedor à tabela
+    fornecedores.forEach(fornecedor => {
+        res.write(
+            `<tr>
+                <td>${fornecedor.nomefornecedor}</td>
+                <td>${fornecedor.cidade}</td>
+                <td>${fornecedor.pedidomin}</td>
+            </tr>`
+        );
+    });
+
+    res.write(
+        `</tbody>
+                </table>
+            </div>
+        </body>
+        </html>`
+    )
+})
+
+app.post('/vendedor', (req, res) => {
+    const { nomevendedor, endereco, telefone } = req.body;
+    const vendedor = { nomevendedor, endereco, telefone };
+    vendedores.push(vendedor);
+    res.redirect('/cadvendedor.html?sucesso=true');
+});
+
+app.get('/consulta-vendedor', (req, res) => {
+    res.write(
+        `<html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Lista de Vendedores</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        </head>
+        <body>
+            <h1 class="text-center">Vendedores Cadastrados</h1>
+            <div class="container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome Vendedor</th>
+                            <th>Endereço</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody>`
+    );
+
+    // Adiciona cada vendedor à tabela
+    vendedores.forEach(vendedor => {
+        res.write(
+            `<tr>
+                <td>${vendedor.nomevendedor}</td>
+                <td>${vendedor.endereco}</td>
+                <td>${vendedor.telefone}</td>
             </tr>`
         );
     });
